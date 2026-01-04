@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Fruty - Toko Buah Online Terpercaya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            border-radius: 2px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #ffa500;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ffa500;
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #ffa500;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: #ffa500;
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+        }
+
+        .cart-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .close-cart {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 1rem;
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🍎 Fresh Fruty</div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#products">Produk</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Fresh Fruty</h1>
+            <p>Buah Segar Berkualitas Langsung Ke Rumah Anda</p>
+            <a href="#products" class="cta-button">Belanja Sekarang</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title fade-in">Buah Segar Pilihan</h2>
+            <div class="product-grid">
+                <div class="product-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Apel Merah Premium" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Apel Fuji Premium</h3>
+                        <p class="product-description">Apel Fuji premium dengan rasa manis khas dan tekstur yang renyah, langsung dari kebun terbaik</p>
+                        <div class="product-price">Rp 35.000/kg</div>
+                        <button class="add-to-cart" onclick="addToCart('Apel Fuji Premium', 35000)">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1580052614034-c55d20bfee3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Jeruk Valencia" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Jeruk Valencia Sweet</h3>
+                        <p class="product-description">Jeruk valencia dengan kandungan vitamin C tinggi dan rasa manis yang menyegarkan</p>
+                        <div class="product-price">Rp 25.000/kg</div>
+                        <button class="add-to-cart" onclick="addToCart('Jeruk Valencia Sweet', 25000)">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1603833665858-e61d17a86224?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pisang Cavendish" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Pisang Cavendish</h3>
+                        <p class="product-description">Pisang cavendish dengan tekstur lembut, kaya kalium dan cocok untuk segala usia</p>
+                        <div class="product-price">Rp 18.000/kg</div>
+                        <button class="add-to-cart" onclick="addToCart('Pisang Cavendish', 18000)">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1515779689357-8b2b205287d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Anggur Merah Seedless" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Anggur Merah Seedless</h3>
+                        <p class="product-description">Anggur merah tanpa biji dengan rasa manis dan kandungan antioksidan tinggi</p>
+                        <div class="product-price">Rp 55.000/kg</div>
+                        <button class="add-to-cart" onclick="addToCart('Anggur Merah Seedless', 55000)">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1605664515962-e24f5cd4f11a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mangga Arumanis" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Mangga Arumanis</h3>
+                        <p class="product-description">Mangga arumanis matang sempurna dengan aroma harum dan daging buah yang manis legit</p>
+                        <div class="product-price">Rp 40.000/kg</div>
+                        <button class="add-to-cart" onclick="addToCart('Mangga Arumanis', 40000)">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Strawberry Premium" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Strawberry Premium</h3>
+                        <p class="product-description">Strawberry premium segar dengan rasa asam manis yang seimbang dan aroma yang menggoda</p>
+                        <div class="product-price">Rp 45.000/kg</div>
+                        <button class="add-to-cart" onclick="addToCart('Strawberry Premium', 45000)">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+
+                <!-- Additional fruits -->
+                <div class="product-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1589927986089-35812388d1b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kiwi Hijau" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Kiwi Hijau Fresh</h3>
+                        <p class="product-description">Kiwi hijau segar dengan vitamin C berlimpah dan rasa unik yang menyegarkan</p>
+                        <div class="product-price">Rp 65.000/kg</div>
+                        <button class="add-to-cart" onclick="addToCart('Kiwi Hijau Fresh', 65000)">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1587049633312-d628ae50a8ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pear Sunkist" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Pear Sunkist</h3>
+                        <p class="product-description">Pear sunkist dengan tekstur renyah dan rasa manis yang alami, kaya serat dan vitamin</p>
+                        <div class="product-price">Rp 50.000/kg</div>
+                        <button class="add-to-cart" onclick="addToCart('Pear Sunkist', 50000)">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Blueberry Premium" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Blueberry Premium</h3>
+                        <p class="product-description">Blueberry premium dengan kandungan antioksidan tinggi dan rasa manis segar</p>
+                        <div class="product-price">Rp 85.000/kg</div>
+                        <button class="add-to-cart" onclick="addToCart('Blueberry Premium', 85000)">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h2>Tentang Fresh Fruty</h2>
+                    <p>Fresh Fruty adalah toko buah online terpercaya yang menghadirkan buah-buahan segar berkualitas premium langsung ke rumah Anda. Kami hanya menjual berbagai jenis buah-buahan segar tanpa sayuran, dengan fokus pada kualitas dan kesegaran.</p>
+                    <p>Dengan pengalaman lebih dari 5 tahun di industri buah-buahan, kami bekerja sama dengan petani dan kebun buah lokal terbaik untuk memastikan setiap buah yang sampai di tangan Anda adalah yang terfresh dan berkualitas premium.</p>
+                    <p>Komitmen kami adalah memberikan buah-buahan segar dengan standar kualitas tinggi, pengiriman cepat, dan layanan pelanggan yang memuaskan. Kepuasan Anda adalah prioritas utama kami.</p>
+                </div>
+                <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Koleksi Buah Segar Fresh Fruty" class="about-image fade-in">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in" style="color: white;">Hubungi Kami</h2>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <h3>Informasi Kontak</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+62 812 3456 7890</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@freshfruty.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Jl. Buah Segar No. 123, Jakarta</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Sen-Sab: 08:00 - 20:00</span>
+                    </div>
+                </div>
+                <form class="contact-form fade-in">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nama Lengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Nomor Telepon" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Pesan Anda" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Fresh Fruty</h3>
+                    <p>Toko buah online terpercaya dengan koleksi buah-buahan segar berkualitas premium dan pelayanan terbaik.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Menu Utama</h3>
+                    <a href="#home">Beranda</a>
+                    <a href="#products">Produk Buah</a>
+                    <a href="#about">Tentang Kami</a>
+                    <a href="#contact">Kontak</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Layanan Buah</h3>
+                    <a href="#">Pengiriman Buah Segar</a>
+                    <a href="#">Garansi Kesegaran</a>
+                    <a href="#">Kemasan Buah Premium</a>
+                    <a href="#">Bantuan 24/7</a>
+                </div>
+            </div>
+            <div class="social-icons">
+                <a href
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2024 Fresh Fruty. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>Keranjang Belanja</h2>
+                <span class="close-cart" onclick="toggleCart()">&times;</span>
+            </div>
+            <div id="cartItems"></div>
+            <div class="cart-total" id="cartTotal">Total: Rp 0</div>
+            <button class="submit-btn" style="margin-top: 1rem;" onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        // Cart functionality
+        let cart = [];
+        let cartCount = 0;
+
+        function addToCart(productName, price) {
+            cart.push({
+                name: productName,
+                price: price,
+                quantity: 1
+            });
+            cartCount++;
+            updateCartUI();
+            
+            // Animation feedback
+            const button = event.target;
+            button.style.background = '#2ecc71';
+            button.innerHTML = '✓ Ditambahkan';
+            setTimeout(() => {
+                button.style.background = 'linear-gradient(45deg, #ff6b6b, #ffa500)';
+                button.innerHTML = 'Tambah ke Keranjang';
+            }, 1000);
+        }
+
+        function updateCartUI() {
+            document.getElementById('cartCount').textContent = cartCount;
+            
+            const cartItems = document.getElementById('cartItems');
+            cartItems.innerHTML = '';
+            
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            <span style="color: #666;">Rp ${item.price.toLocaleString()}/kg</span>
+                        </div>
+                        <div>
+                            <span>Qty: ${item.quantity}</span>
+                            <button onclick="removeFromCart(${index})" style="background: #ff4757; color: white; border: none; padding: 0.5rem; border-radius: 5px; margin-left: 10px; cursor: pointer;">×</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('cartTotal').textContent = `Total: Rp ${total.toLocaleString()}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            cartCount--;
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Keranjang masih kosong!');
+                return;
+            }
+            
+            alert('Terima kasih! Pesanan buah Anda sedang diproses. Kami akan menghubungi Anda segera untuk konfirmasi pengiriman buah segar.');
+            cart = [];
+            cartCount = 0;
+            updateCartUI();
+            toggleCart();
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const phone = this.querySelector('input[type="tel"]').value;
+            const message = this.querySelector('textarea').value;
+            
+            // Simple validation
+            if (!name || !email || !phone || !message) {
+                alert('Mohon lengkapi semua field!');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'Mengirim...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Terima kasih! Pesan Anda telah terkirim. Tim Fresh Fruty akan merespons dalam 24 jam.');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Mobile menu toggle
+        function createMobileMenu() {
+            const nav = document.querySelector('nav');
+            const navLinks = document.querySelector('.nav-links');
+            
+            // Create mobile menu button
+            const mobileMenuBtn = document.createElement('div');
+            mobileMenuBtn.className = 'mobile-menu-btn';
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            mobileMenuBtn.style.cssText = `
+                display: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: white;
+            `;
+            
+            // Insert mobile menu button
+            nav.insertBefore(mobileMenuBtn, nav.querySelector('.cart-icon'));
+            
+            // Toggle mobile menu
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('mobile-active');
+            });
+            
+            // Add mobile styles
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @media (max-width: 768px) {
+                    .mobile-menu-btn { display: block !important; }
+                    .nav-links {
+                        position: fixed;
+                        top: 70px;
+                        right: -100%;
+                        width: 80%;
+                        height: calc(100vh - 70px);
+                        background: linear-gradient(135deg, #ff6b6b, #ffa500);
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: start;
+                        padding-top: 3rem;
+                        transition: right 0.3s ease;
+                        z-index: 1000;
+                        gap: 1rem;
+                    }
+                    .nav-links.mobile-active {
+                        right: 0;
+                    }
+                    .nav-links li {
+                        width: 80%;
+                        text-align: center;
+                    }
+                    .nav-links a {
+                        display: block;
+                        padding: 1rem;
+                        width: 100%;
+                        border-radius: 10px;
+                        background: rgba(255,255,255,0.1);
+                        margin-bottom: 0.5rem;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Search functionality
+        function addSearchFeature() {
+            const searchHTML = `
+                <div class="search-container" style="display: flex; align-items: center; margin-left: 2rem;">
+                    <input type="text" id="searchInput" placeholder="Cari buah..." style="
+                        padding: 0.5rem 1rem;
+                        border: none;
+                        border-radius: 25px;
+                        margin-right: 0.5rem;
+                        min-width: 200px;
+                        background: rgba(255,255,255,0.2);
+                        color: white;
+                        backdrop-filter: blur(10px);
+                    ">
+                    <i class="fas fa-search" style="color: white; cursor: pointer; font-size: 1.2rem;" onclick="performSearch()"></i>
+                </div>
+            `;
+            
+            const nav = document.querySelector('nav');
+            nav.insertAdjacentHTML('beforeend', searchHTML);
+            
+            // Add search functionality
+            document.getElementById('searchInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        }
+
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const productCards = document.querySelectorAll('.product-card');
+            
+            if (!searchTerm) {
+                productCards.forEach(card => card.style.display = 'block');
+                return;
+            }
+            
+            productCards.forEach(card => {
+                const productName = card.querySelector('.product-name').textContent.toLowerCase();
+                if (productName.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeInUp 0.5s ease';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Scroll to products section
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Product filter functionality
+        function addProductFilters() {
+            const filterHTML = `
+                <div class="filter-container" style="
+                    display: flex;
+                    justify-content: center;
+                    gap: 1rem;
+                    margin-bottom: 2rem;
+                    flex-wrap: wrap;
+                ">
+                    <button class="filter-btn active" onclick="filterProducts('all')" style="
+                        padding: 0.5rem 1.5rem;
+                        border: none;
+                        border-radius: 25px;
+                        background: linear-gradient(45deg, #ff6b6b, #ffa500);
+                        color: white;
+                        cursor: pointer;
+                        font-weight: bold;
+                        transition: all 0.3s ease;
+                    ">Semua Buah</button>
+                    <button class="filter-btn" onclick="filterProducts('citrus')" style="
+                        padding: 0.5rem 1.5rem;
+                        border: 2px solid #ff6b6b;
+                        border-radius: 25px;
+                        background: transparent;
+                        color: #ff6b6b;
+                        cursor: pointer;
+                        font-weight: bold;
+                        transition: all 0.3s ease;
+                    ">Buah Jeruk</button>
+                    <button class="filter-btn" onclick="filterProducts('tropical')" style="
+                        padding: 0.5rem 1.5rem;
+                        border: 2px solid #ff6b6b;
+                        border-radius: 25px;
+                        background: transparent;
+                        color: #ff6b6b;
+                        cursor: pointer;
+                        font-weight: bold;
+                        transition: all 0.3s ease;
+                    ">Buah Tropis</button>
+                    <button class="filter-btn" onclick="filterProducts('berry')" style="
+                        padding: 0.5rem 1.5rem;
+                        border: 2px solid #ff6b6b;
+                        border-radius: 25px;
+                        background: transparent;
+                        color: #ff6b6b;
+                        cursor: pointer;
+                        font-weight: bold;
+                        transition: all 0.3s ease;
+                    ">Buah Berry</button>
+                </div>
+            `;
+            
+            const productsSection = document.querySelector('.products .container');
+            const sectionTitle = productsSection.querySelector('.section-title');
+            sectionTitle.insertAdjacentHTML('afterend', filterHTML);
+        }
+
+        function filterProducts(category) {
+            const productCards = document.querySelectorAll('.product-card');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            filterBtns.forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.background = 'transparent';
+                btn.style.color = '#ff6b6b';
+            });
+            event.target.classList.add('active');
+            event.target.style.background = 'linear-gradient(45deg, #ff6b6b, #ffa500)';
+            event.target.style.color = 'white';
+            
+            // Filter products
+            productCards.forEach(card => {
+                const productName = card.querySelector('.product-name').textContent.toLowerCase();
+                let show = false;
+                
+                switch(category) {
+                    case 'all':
+                        show = true;
+                        break;
+                    case 'citrus':
+                        show = productName.includes('jeruk');
+                        break;
+                    case 'tropical':
+                        show = productName.includes('mangga') || productName.includes('pisang') || productName.includes('kiwi');
+                        break;
+                    case 'berry':
+                        show = productName.includes('strawberry') || productName.includes('anggur') || productName.includes('blueberry');
+                        break;
+                }
+                
+                if (show) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeInUp 0.5s ease';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Newsletter subscription
+        function addNewsletterSection() {
+            const newsletterHTML = `
+                <section class="newsletter" style="
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    padding: 4rem 0;
+                    text-align: center;
+                    color: white;
+                ">
+                    <div class="container">
+                        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">🍎 Dapatkan Penawaran Buah Terbaik!</h2>
+                        <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #ddd;">Berlangganan newsletter kami untuk mendapatkan promo eksklusif buah segar dan info produk buah terbaru</p>
+                        <div class="newsletter-form" style="
+                            display: flex;
+                            justify-content: center;
+                            gap: 1rem;
+                            flex-wrap: wrap;
+                            max-width: 500px;
+                            margin: 0 auto;
+                        ">
+                            <input type="email" placeholder="Masukkan email untuk promo buah" style="
+                                flex: 1;
+                                padding: 1rem;
+                                border: none;
+                                border-radius: 25px;
+                                min-width: 250px;
+                                font-size: 1rem;
+                            ">
+                            <button onclick="subscribeNewsletter()" style="
+                                padding: 1rem 2rem;
+                                background: linear-gradient(45deg, #ff6b6b, #ffa500);
+                                color: white;
+                                border: none;
+                                border-radius: 25px;
+                                font-weight: bold;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            ">Berlangganan</button>
+                        </div>
+                    </div>
+                </section>
+            `;
+            
+            const footer = document.querySelector('footer');
+            footer.insertAdjacentHTML('beforebegin', newsletterHTML);
+        }
+
+        function subscribeNewsletter() {
+            const emailInput = document.querySelector('.newsletter-form input');
+            const email = emailInput.value;
+            
+            if (!email || !email.includes('@')) {
+                alert('Mohon masukkan email yang valid!');
+                return;
+            }
+            
+            const button = document.querySelector('.newsletter-form button');
+            const originalText = button.innerHTML;
+            button.innerHTML = 'Berlangganan...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                alert('Terima kasih! Anda telah berlangganan newsletter Fresh Fruty. Dapatkan info promo buah terbaru langsung di email Anda!');
+                emailInput.value = '';
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 1500);
+        }
+
+        // Back to top button
+        function addBackToTopButton() {
+            const backToTopHTML = `
+                <button id="backToTop" style="
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    width: 50px;
+                    height: 50px;
+                    background: linear-gradient(45deg, #ff6b6b, #ffa500);
+                    color: white;
+                    border: none;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    font-size: 1.2rem;
+                    display: none;
+                    z-index: 1000;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+                ">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', backToTopHTML);
+            
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            // Show/hide button based on scroll position
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.style.display = 'block';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            });
+            
+            // Scroll to top on click
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Floating WhatsApp button
+        function addWhatsAppButton() {
+            const whatsappHTML = `
+                <a href="https://wa.me/6281234567890" target="_blank" title="Chat Fresh Fruty - Pesan Buah Segar" style="
+                    position: fixed;
+                    bottom: 80px;
+                    right: 20px;
+                    width: 60px;
+                    height: 60px;
+                    background: #25D366;
+                    color: white;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.5rem;
+                    text-decoration: none;
+                    z-index: 1000;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+                    animation: pulse 2s infinite;
+                ">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <style>
+                    @keyframes pulse {
+                        0% { transform: scale(1); }
+                        50% { transform: scale(1.1); }
+                        100% { transform: scale(1); }
+                    }
+                </style>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', whatsappHTML);
+        }
+
+        // Loading screen
+        function addLoadingScreen() {
+            const loadingHTML = `
+                <div id="loading" style="
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(135deg, #ff6b6b, #ffa500);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 9999;
+                    color: white;
+                ">
+                    <div style="
+                        font-size: 3rem;
+                        margin-bottom: 1rem;
+                        animation: spin 2s linear infinite;
+                    ">🍎</div>
+                    <h2 style="margin-bottom: 0.5rem;">Fresh Fruty</h2>
+                    <p>Loading buah segar terbaik...</p>
+                </div>
+                <style>
+                    @keyframes spin {
+                        from { transform: rotate(0deg); }
+                        to { transform: rotate(360deg); }
+                    }
+                </style>
+            `;
+            
+            document.body.insertAdjacentHTML('afterbegin', loadingHTML);
+            
+            // Hide loading screen after page loads
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    const loading = document.getElementById('loading');
+                    loading.style.opacity = '0';
+                    setTimeout(() => {
+                        loading.remove();
+                    }, 500);
+                }, 1000);
+            });
+        }
+
+        // Testimonials section
+        function addTestimonialsSection() {
+            const testimonialsHTML = `
+                <section class="testimonials" style="
+                    padding: 5rem 0;
+                    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+                ">
+                    <div class="container">
+                        <h2 class="section-title">🗣️ Apa Kata Pelanggan Kami</h2>
+                        <div class="testimonials-grid" style="
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                            gap: 2rem;
+                            margin-top: 3rem;
+                        ">
+                            <div class="testimonial-card" style="
+                                background: white;
+                                padding: 2rem;
+                                border-radius: 20px;
+                                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                                text-align: center;
+                            ">
+                                <div style="font-size: 3rem; color: #ffa500; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; margin-bottom: 1rem; color: #666;">
+                                    "Buahnya selalu fresh dan berkualitas premium! Mangga arumanisnya sangat manis dan segar. Pelayanan Fast response!"
+                                </p>
+                                <strong>- Sarah, Jakarta</strong>
+                            </div>
+                            <div class="testimonial-card" style="
+                                background: white;
+                                padding: 2rem;
+                                border-radius: 20px;
+                                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                                text-align: center;
+                            ">
+                                <div style="font-size: 3rem; color: #ffa500; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; margin-bottom: 1rem; color: #666;">
+                                    "Kualitas buah di Fresh Fruty benar-benar premium. Strawberry dan blueberrynya fresh banget. Sudah berlangganan 2 tahun!"
+                                </p>
+                                <strong>- Budi, Bandung</strong>
+                            </div>
+                            <div class="testimonial-card" style="
+                                background: white;
+                                padding: 2rem;
+                                border-radius: 20px;
+                                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                                text-align: center;
+                            ">
+                                <div style="font-size: 3rem; color: #ffa500; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
+                                <p style="font-style: italic; margin-bottom: 1rem; color: #666;">
+                                    "Website mudah digunakan, harga buah terjangkau, dan pengiriman cepat. Apel dan jeruknya selalu segar!"
+                                </p>
+                                <strong>- Rina, Surabaya</strong>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+            
+            const contactSection = document.querySelector('.contact');
+            contactSection.insertAdjacentHTML('beforebegin', testimonialsHTML);
+        }
+
+        // Initialize all features
+        document.addEventListener('DOMContentLoaded', () => {
+            addLoadingScreen();
+            createMobileMenu();
+            addSearchFeature();
+            addProductFilters();
+            addNewsletterSection();
+            addTestimonialsSection();
+            addBackToTopButton();
+            addWhatsAppButton();
+        });
+
+        // Close cart when clicking outside
+        document.addEventListener('click', function(event) {
+            const cartModal = document.getElementById('cartModal');
+            if (event.target === cartModal) {
+                toggleCart();
+            }
+        });
+
+        // Keyboard navigation for cart modal
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const cartModal = document.getElementById('cartModal');
+                if (cartModal.style.display === 'block') {
+                    toggleCart();
+                }
+            }
+        });
+
+        // Add hover effects to product cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-15px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
